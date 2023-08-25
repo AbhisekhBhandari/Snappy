@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import { toast, ToastContainer } from "react-toastify";
@@ -10,32 +10,30 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-
-  useEffect(()=>{
-    if(localStorage.getItem('chat-app-user')){
-    navigate('/')
+  useEffect(() => {
+    if (localStorage.getItem("chat-app-user")) {
+      navigate("/");
     }
-  },[])
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (handleValidation()) {
-      const { username,password, } = values;
-      const  {data}  = await axios.post(loginRoute, {
+      const { username, password } = values;
+      const { data } = await axios.post(loginRoute, {
         username,
         password,
       });
       console.log(data);
-      if(!data.status){
-        showToast(data.msg)
-      }else{
-        localStorage.setItem('chat-app-user', JSON.stringify(data.fetchUser))
-        navigate('/')
+      if (!data.status) {
+        showToast(data.msg);
+      } else {
+        localStorage.setItem("chat-app-user", JSON.stringify(data.fetchUser));
+        navigate("/");
       }
-    
     }
   };
   const showToast = (message) => {
@@ -50,8 +48,8 @@ const Login = () => {
   };
 
   const handleValidation = () => {
-    const { username,  password} = values;
-    if (!username || !password ) {
+    const { username, password } = values;
+    if (!username || !password) {
       return showToast("Fill in the credentials");
     }
 
@@ -88,7 +86,7 @@ const Login = () => {
           onChange={(e) => handleChange(e)}
           className="px-3 py-3 rounded-md w-full border-0.1 border-registerInput focus:border-registerInputFocus outline-none text-sm bg-transparent  text-white"
           min="3"
-          />
+        />
 
         <input
           type="password"
@@ -102,10 +100,13 @@ const Login = () => {
           type="submit"
           className=" bg-registerButton w-full py-3 font-semibold text-white"
         >
-          Create User
+         Login
         </button>
         <span className="text-white">
-          Dont have a account? <Link to="/register" className=" text-darkBlue">Register</Link>
+          Dont have a account?{" "}
+          <Link to="/register" className=" text-darkBlue">
+            Register
+          </Link>
         </span>
       </form>
       <ToastContainer />

@@ -1,4 +1,4 @@
-export  const host = process.env.BACKEND_URL;
+export  const host = "https://snappy-backend-bdnn.onrender.com";
 export const registerRoute = `${host}/api/auth/register`
 export const loginRoute = `${host}/api/auth/login`
 export const setAvatarRoute = `${host}/api/auth/setAvatar`

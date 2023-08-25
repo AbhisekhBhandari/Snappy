@@ -57,7 +57,7 @@ useEffect(()=>{
 
   return (
     <div className=" h-full  w-full relative">
-      <div className="flex w-full h-[10%] bg-black items-center justify-between px-2">
+      <div className="flex w-full  bg-black items-center justify-between px-6 py-4">
         <div className="flex  items-center gap-2">
           <img
             src={`data:image/svg+xml;base64,${currentChat.avatarImage}`}
@@ -81,7 +81,7 @@ useEffect(()=>{
             );
           })}
       </div>
-      <div className=" absolute bottom-0 h-[8%] w-full">
+      <div className=" absolute bottom-0 w-full">
         <ChatInput handleSendMsg={handleSendMsg} />
       </div>
     </div>

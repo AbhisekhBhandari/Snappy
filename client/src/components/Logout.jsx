@@ -10,7 +10,7 @@ const Logout = () => {
     
   }
   return (
-    <div className='bg-purple-400 px-2 py-1 rounded-md' onClick={logoutFunc}>
+    <div className='bg-purple-400 px-2 py-1 rounded-md cursor-pointer' title='Logout' onClick={logoutFunc}>
       <BiPowerOff color='white' fontSize={19}/>
     </div>
   )

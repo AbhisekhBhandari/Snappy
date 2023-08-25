@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Contacts from "../components/Contacts";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { allUsersRoute, host, chatCheck } from "../utils/APIRoutes";
 import Loader from "../components/Loader";
@@ -89,8 +89,6 @@ const Chat = () => {
 
   useEffect(() => {
     onChatChange();
-    if (currentUser) {
-    }
   }, [currentChat]);
 
   if (!currentUser) {

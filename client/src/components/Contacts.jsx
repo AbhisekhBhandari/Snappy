@@ -8,8 +8,9 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
     setCurrentSelected(index);
     changeChat(contact);
   };
+
   return (
-    <div className="flex flex-col items-center pt-2 bg-[#080420] h-full gap-3">
+    <div className="flex flex-col items-center py-3 bg-[#080420] h-full gap-3">
       <div className="flex items-center h-[10%]">
         <img src={Logo} alt="Snappy" className="h-7" />
         <span className=" text-xl font-semibold text-white">SNAPPY</span>
@@ -19,8 +20,10 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
           return (
             <div
               key={contact._id}
-              className={` flex  items-center gap-2 w-full py-2 px-2 bg-[#ffffff34] cursor-pointer ${currentSelected === index ? 'bg-[#9a86f3]' :''}`}
-              onClick={()=>changeCurrentChat(index, contact)}
+              className={` flex  items-center gap-2 w-full py-2 px-2 cursor-pointer ${
+                currentSelected === index ? "bg-[#9a86f3]" : "bg-[#ffffff34] "
+              }`}
+              onClick={() => changeCurrentChat(index, contact)}
             >
               <img
                 src={`data:image/svg+xml;base64,${contact.avatarImage}`}
@@ -32,7 +35,7 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
           );
         })}
       </div>
-      <div className="flex items-center justify-center gap-2 h-[10%]">
+      <div className="flex items-center justify-center gap-2 h-[10%] py-4">
         <img
           src={`data:image/svg+xml;base64,${currentUser.avatarImage}`}
           alt="Avatar"
