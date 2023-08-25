@@ -3,17 +3,26 @@ import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import Picker from "emoji-picker-react";
 
-const ChatInput = () => {
+const ChatInput = ({ handleSendMsg }) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [msg, setMsg] = useState("");
 
   const toggleShowEmojiPicker = () => {
     setShowEmojiPicker((prev) => !prev);
   };
+
   const handleEmojiClick = (event, emojiObject) => {
     let message = msg;
     message += emojiObject.emoji;
     setMsg(message);
+  };
+
+  const sendChat = (event) => {
+    event.preventDefault();
+    if (msg.length > 0) {
+      handleSendMsg(msg);
+      setMsg("");
+    }
   };
 
   return (
@@ -40,10 +49,18 @@ const ChatInput = () => {
         <input
           type=" text"
           value={msg}
-          onChange={(e) => setMsg(e.target.value)}
+          onChange={(e) => {
+            setMsg(e.target.value);
+            if (e.key === "Enter") {
+              sendChat();
+            }
+          }}
           className="flex-1 py-3 bg-transparent px-3 outline-none "
         />
-        <button className="h-full bg-[#9a86f3]  flex items-center justify-center py-4 px-6">
+        <button
+          onClick={sendChat}
+          className="h-full bg-[#9a86f3]  flex items-center justify-center py-4 px-6"
+        >
           <IoMdSend fontSize={22} />
         </button>
       </div>
